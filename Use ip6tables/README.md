@@ -30,8 +30,8 @@
 * 1. 使用 WinSCP，将 operation.sh 上传到路由器的 /tmp 目录中。
 * 2. 使用 PuTTY 登录路由器，cd到tmp目录，随后运行：
 ```
-chmod +x install.sh
-./install.sh
+chmod +x operation.sh
+./operation.sh
 ```
 * 3. 操作完成后，重启路由器。
 

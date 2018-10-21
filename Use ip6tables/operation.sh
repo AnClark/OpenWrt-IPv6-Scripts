@@ -130,11 +130,22 @@ uci commit firewall
 
 
 # 7.修改/etc/sysctl.conf，把文件中相关内容改为以下内容，没有的话就添加，大概说接收广播并开启ipv6转发
+# 注意：最新的18.06.1中没有net.ipv6.conf.default.forwarding和net.ipv6.conf.all.forwarding，需在文件末尾额外添加之
+touch /etc/sysctl.conf
+
 a=$(sed -n '/net.ipv6.conf.default.forwarding/=' /etc/sysctl.conf)
-sed -i "${a}d; $((a-1))a net.ipv6.conf.default.forwarding=2" /etc/sysctl.conf
+if [ ! "$a" ]; then
+	echo "net.ipv6.conf.default.forwarding=2" >> /etc/sysctl.conf
+else
+	sed -i "${a}d; $((a-1))a net.ipv6.conf.default.forwarding=2" /etc/sysctl.conf
+fi
 
 a=$(sed -n '/net.ipv6.conf.all.forwarding/=' /etc/sysctl.conf)
-sed -i "${a}d; $((a-1))a net.ipv6.conf.all.forwarding=2" /etc/sysctl.conf
+if [ ! "$a" ]; then
+	echo "net.ipv6.conf.all.forwarding=2" >> /etc/sysctl.conf
+else
+	sed -i "${a}d; $((a-1))a net.ipv6.conf.all.forwarding=2" /etc/sysctl.conf
+fi
 
 a=$(sed -n '/net.ipv6.conf.default.accept_ra/=' /etc/sysctl.conf)
 if [ ! "$a" ]; then
