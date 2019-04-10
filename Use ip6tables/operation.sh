@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------
 
 
-# 1. Install the package kmod-ipt-nat6    #安装kmod-ipt-nat6
+# 1. Install the package kmod-ipt-nat6    # 安装kmod-ipt-nat6
 opkg update
 opkg install kmod-ipt-nat6
 
@@ -129,6 +129,11 @@ uci set firewall.@rule["$(uci show firewall | grep 'Allow-ICMPv6-Forward' | cut 
 uci commit firewall
 
 
+# 7. Modify /etc/sysctl.conf. If entries not exist, add them. 
+# It's about to receive broadcasts and enable IPv6 transfer.
+# NOTICE: The newest 18.06.1 doesn't have net.ipv6.conf.default.forwarding and net.ipv6.conf.all.forwarding,
+#         so I have to attach them.
+#
 # 7.修改/etc/sysctl.conf，把文件中相关内容改为以下内容，没有的话就添加，大概说接收广播并开启ipv6转发
 # 注意：最新的18.06.1中没有net.ipv6.conf.default.forwarding和net.ipv6.conf.all.forwarding，需在文件末尾额外添加之
 touch /etc/sysctl.conf
@@ -164,6 +169,7 @@ else
 fi
 
 
+# 8. Add transfer rules to firewall.
 # 8. 加入转发规则，编辑/etc/firewall.user，或路由器界面防火墙规则里加上
 echo "ip6tables -t nat -I POSTROUTING -s $(uci get network.globals.ula_prefix) -j MASQUERADE" >> /etc/firewall.user
 /etc/init.d/firewall restart
