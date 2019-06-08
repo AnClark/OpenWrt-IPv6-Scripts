@@ -51,6 +51,7 @@
 
 ## 参考资料
 
+* [TS - 在OpenWrt上配置原生IPv6 NAT](https://tang.su/2017/03/openwrt-ipv6-nat/)
 * [【转发】 通过openwrt的NAT6转发，使后端设备获得ipv6网络](https://blog.csdn.net/guituo9698/article/details/70285755)
 * zqp19950813 整理的教程
 
