@@ -29,6 +29,8 @@
 2. 这时您可能需要输入两次路由器密码，按提示操作即可。
 3. 脚本执行完毕后，重启路由器。
 
+> **注意：**如果你的路由器默认网关地址不是`192.168.1.1`，请对`execute.cmd`或`execute.sh`做出修改。
+
 ## 手动操作方法
 
 ### Windows 下
@@ -83,10 +85,10 @@ By the way, you can also try WinSCP with PuTTY. WinSCP serves as `scp`, and `PuT
 ## How to apply automatically
 
 1. On Windows, ensure that the commands above are in your `%PATH%`, then run `execute.cmd`. If you're using Linux or Git Bash or Cygwin, run `execute.sh`. To run scripts in the current directory, please use ```./<script filename>```.
-
 2. At this time, you may need to type router's admin password twice. Just follow the instructions.
-
 3. Reboot your router after script finishes.
+
+> **NOTICE:** If your router's gateway address is not `192.168.1.1`, you should modify the `execute.sh` or `execute.cmd`.
 
 ## Manually apply
 
