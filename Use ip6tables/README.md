@@ -66,9 +66,9 @@
 
 ## Principle
 
-This script will make your router support IPv6's NAT by installing `kmod-ipt-nat6` kernel module, with configurating `ip6tables`.
+This script will make your router support IPv6's NAT by installing `kmod-ipt-nat6` kernel module and configurating `ip6tables`.
 
-During this, to ensure these features take effect, you need to set a series of parameters. Read `operation.sh` to find out how to do.
+During this, to ensure these features take effect, you need to set a series of parameters. Read `operation.sh` to learn what have done.
 
 ## Requirements
 
@@ -107,12 +107,12 @@ By the way, you can also try WinSCP with PuTTY. WinSCP serves as `scp`, and `PuT
 
 ### On Linux
 
-Follow the following shell commands:
+Follow the following shell commands. Remember to replace "<ROUTER ADDRESS>" with your router's gateway address:
 
 1. Upload `operation.sh` to your router.
 
     ```bash
-    scp operation.sh /tmp
+    scp operation.sh root@<ROUTER ADDRESS>:/tmp
     ```
 
 2. Log in your router, then execute the script.
@@ -130,4 +130,4 @@ Follow the following shell commands:
 
 ## Notice
 
-Installing kernel modules requires your router to have Internet access, as the package manager will fetch modules from OpenWrt's repository.
+Installing kernel modules requires your router to have Internet access, because the package manager will fetch modules from OpenWrt's repository.
